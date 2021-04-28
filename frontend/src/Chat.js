@@ -1,11 +1,12 @@
-import { Avatar, IconButton } from "@material-ui/core";
+import { Avatar, IconButton, InputBase } from "@material-ui/core";
 
 import CallIcon from "@material-ui/icons/Call";
 import InfoIcon from "@material-ui/icons/Info";
 import React, { useEffect, useState, useRef } from "react";
 import "./Chat.css";
 import { Cancel, InsertEmoticonOutlined } from "@material-ui/icons";
-
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:8000");
 function Chat() {
   const messageEl = useRef(null);
   const [input, setInput] = useState("");
@@ -22,7 +23,7 @@ function Chat() {
   const sendMessage = (e) => {
     e.preventDefault();
     console.log("you typed >>>", input);
-
+    socket.on("connection");
     setInput("");
   };
 
